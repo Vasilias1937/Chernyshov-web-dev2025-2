@@ -1,0 +1,36 @@
+body {
+    font-size: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+.avatar {
+    max-width: 100%;
+}
+
+.comment-form {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.comments-section {
+    margin-top: 2rem;
+}
+
+.comment {
+    margin-bottom: 1.5rem;
+}
+
+.reply {
+    margin-left: 3rem;
+    margin-top: 1rem;
+}
+
+.comment-author {
+    font-weight: bold;
+}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <!-- Заголовок поста -->
+        <h1 class="mt-4">{{ post.title }}</h1>
+        
+        <!-- Информация об авторе и дате публикации -->
+        <p class="lead">
+            Автор: {{ post.author }}
+        </p>
+        <p class="text-muted">
+            Опубликовано {{ post.date.strftime('%d.%m.%Y') }}
+        </p>
+        
+        <hr>
+        
+        <!-- Изображение поста -->
+        <img class="img-fluid rounded mb-4" src="{{ url_for('static', filename='images/' + post.image_id) }}" alt="{{ post.title }}">
+        
+        <!-- Текст поста -->
+        <div class="post-content mb-5">
+            {{ post.text }}
+        </div>
+        
+        <hr>
+        
+        <!-- Форма комментария -->
+        <div class="comment-form">
+            <h4>Оставьте комментарий:</h4>
+            <form>
+                <div class="mb-3">
+                    <textarea class="form-control" rows="3" placeholder="Введите ваш комментарий"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </form>
+        </div>
+        
+        <hr>
+        
+        <!-- Комментарии -->
+        <div class="comments-section">
+            <h4 class="mb-4">Комментарии:</h4>
+            
+            {% if post.comments %}
+                {% for comment in post.comments %}
+                    <div class="comment">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <img class="rounded-circle" src="https://via.placeholder.com/50" alt="User Avatar">
+                            </div>
+                            <div class="ms-3">
+                                <div class="comment-author">{{ comment.author }}</div>
+                                <p>{{ comment.text }}</p>
+                                
+                                <!-- Ответы на комментарии -->
+                                {% if comment.replies %}
+                                    {% for reply in comment.replies %}
+                                        <div class="reply">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0">
+                                                    <img class="rounded-circle" src="https://via.placeholder.com/40" alt="User Avatar">
+                                                </div>
+                                                <div class="ms-3">
+                                                    <div class="comment-author">{{ reply.author }}</div>
+                                                    <p>{{ reply.text }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Пока нет комментариев. Будьте первым!</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %} 
