@@ -1,0 +1,43 @@
+.blog-post {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.blog-post-title {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.blog-post-meta {
+    color: #6c757d;
+    margin-bottom: 2rem;
+}
+
+.blog-post-content {
+    line-height: 1.6;
+    margin-bottom: 3rem;
+}
+
+.comments {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.comment {
+    padding: 1rem;
+    border-left: 3px solid #007bff;
+    background-color: #f8f9fa;
+}
+
+.replies {
+    margin-left: 2rem;
+    padding-left: 1rem;
+    border-left: 2px solid #6c757d;
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 3rem;
+} 
