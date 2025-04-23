@@ -1,6 +1,12 @@
 import pytest
-from app import app
+import sys
+import os
 from datetime import datetime
+
+# Добавляем путь к родительской директории в sys.path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from app import app
 
 @pytest.fixture
 def client():
@@ -82,13 +88,13 @@ def test_nonexistent_post(client):
 def test_footer_content(client):
     """Тест содержимого футера"""
     response = client.get('/posts/0')
-    assert b'Чернышов Артур Александрович' in response.data
-    assert b'221-322' in response.data
+    assert 'Чернышов Артур Александрович' in response.get_data(as_text=True)
+    assert '221-322' in response.get_data(as_text=True)
 
 def test_posts_index(client):
     response = client.get("/posts")
     assert response.status_code == 200
-    assert "Последние посты" in response.text
+    assert "Последние посты" in response.get_data(as_text=True)
 
 def test_posts_index_template(client, captured_templates, mocker, posts_list):
     with captured_templates as templates:
