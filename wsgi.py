@@ -6,9 +6,9 @@ path = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, path)
 
 # Импортируем приложения
-from Web_LAB1_Chernyshov.app.app import app as lab1_app
-from Web_LAB2_Chernyshov.app.app import app as lab2_app
-from Web_LAB3_Chernyshov.app.app import app as lab3_app
+from Web_LAB1_Chernyshov.app import app as lab1_app
+from Web_LAB2_Chernyshov.app import app as lab2_app
+from Web_LAB3_Chernyshov.app import app as lab3_app
 
 # Создаем словарь приложений
 applications = {
