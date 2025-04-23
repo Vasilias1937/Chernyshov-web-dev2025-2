@@ -47,18 +47,6 @@ def application(environ, start_response):
             environ['SERVER_NAME'] = environ.get('HTTP_HOST', 'localhost')
             environ['SERVER_PORT'] = environ.get('SERVER_PORT', '8000')
             
-            # Устанавливаем правильный SCRIPT_NAME для Flask
-            app.config['APPLICATION_ROOT'] = prefix
-            app.config['SERVER_NAME'] = None  # Для работы на любом домене
-            
-            # Устанавливаем правильные пути для статических файлов и шаблонов
-            app.static_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), f'Web_{prefix[1:].upper()}_Chernyshov/app/static')
-            app.template_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), f'Web_{prefix[1:].upper()}_Chernyshov/app/templates')
-            
-            # Устанавливаем правильный URL_PREFIX
-            app.config['URL_PREFIX'] = prefix
-            app.config['SCRIPT_NAME'] = prefix
-            
             return app(environ, start_response)
     
     # Если путь не соответствует ни одному приложению, возвращаем 404

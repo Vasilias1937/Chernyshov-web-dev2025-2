@@ -1,15 +1,11 @@
 import random
 from functools import lru_cache
-from flask import Flask, render_template, abort, request, make_response, redirect, url_for
+from flask import render_template, abort, request, make_response, redirect, url_for
 from faker import Faker
 import re
+from . import app
 
 fake = Faker()
-
-app = Flask(__name__)
-# Настраиваем приложение для работы с префиксами
-app.config['APPLICATION_ROOT'] = '/lab2'
-app.config['SERVER_NAME'] = 'localhost:8000'
 
 images_ids = ['7d4e9175-95ea-4c5f-8be5-92a6b708bb3c',
               '2d2ab7df-cdbc-48a8-a936-35bba702def5',
@@ -125,4 +121,4 @@ def phone_validation():
     return render_template('phone_validation.html',
                          title='Валидация номера телефона',
                          error=error,
-                         formatted_number=formatted_number)
+                         formatted_number=formatted_number) 
