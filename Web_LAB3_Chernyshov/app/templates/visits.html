@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Счетчик посещений{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="my-5">Счетчик посещений</h1>
+        
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Статистика посещений</h5>
+                <p class="card-text">
+                    Количество посещений страницы: <strong>{{ visits }}</strong>
+                </p>
+                <p class="card-text">
+                    Последнее посещение: <strong>{{ last_visit }}</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

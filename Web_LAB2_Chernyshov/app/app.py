@@ -7,7 +7,9 @@ import re
 fake = Faker()
 
 app = Flask(__name__)
-application = app
+# Настраиваем приложение для работы с префиксами
+app.config['APPLICATION_ROOT'] = '/lab2'
+app.config['SERVER_NAME'] = 'localhost:8000'
 
 images_ids = ['7d4e9175-95ea-4c5f-8be5-92a6b708bb3c',
               '2d2ab7df-cdbc-48a8-a936-35bba702def5',
